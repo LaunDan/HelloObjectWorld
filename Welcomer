@@ -1,0 +1,19 @@
+package helloobjects;
+
+/**
+ *
+ * @author Laun
+ */
+/** Class presents welcomer which can greeting users */
+public class Welcomer {
+    /** Text greeting */
+    public String text;
+    /** 
+     * Greeting user with text and his name.
+     * @param name Name of user
+     * @return Text with greeting
+     */
+    public String greeting(String name){
+        return String.format("%s %s.\n",text , name);
+    }
+}
