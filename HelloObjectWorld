@@ -1,0 +1,19 @@
+package helloobjects;
+
+/**
+ *
+ * @author Laun
+ */
+import java.util.Scanner;
+public class HelloObjectWorld {
+    public static void main(String[] args){
+        Welcomer welcomer = new Welcomer();
+        Scanner sc = new Scanner(System.in, "Windows-1250");
+        System.out.println("Enter your name: ");
+        String name = sc.nextLine();
+        welcomer.text = "Welcome my deer self tough developer";
+        System.out.println(welcomer.greeting(name));
+        
+        
+    }
+}
