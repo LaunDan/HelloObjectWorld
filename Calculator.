@@ -5,7 +5,7 @@ package calculator;
  * @author Laun
  */
 
-public class OperationChoose {
+public class CalculateAndChoose {
     public String calculate(int choose, float a, float b){
         if (choose < 0 || choose > 6)
             return "Wrong choose";
