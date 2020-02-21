@@ -1,0 +1,31 @@
+package calculator;
+
+/**
+ *
+ * @author Laun
+ */
+import java.util.Scanner;
+
+public class Calculator {
+
+    public static void main(String[] args) {
+        OperationChoose operationChoose = new OperationChoose();
+        Scanner sc = new Scanner(System.in, "Windows-1250");
+        System.out.println("Welcome in calculator!");
+        boolean again = true;
+        while (again) {
+            System.out.println("Enter first number:");
+            float a = Float.parseFloat(sc.nextLine());
+            System.out.println("Choose operation:\n1-summation\n2-substraction\n3-multiplication\n4-division\n5-exponential\n6-square root");
+            int choose = Integer.parseInt(sc.nextLine());
+            System.out.println("Enter second number:");
+            float b = Float.parseFloat(sc.nextLine());
+            System.out.println(operationChoose.calculate(choose, a, b));
+            System.out.println("Do you want calculate again? [yes/no]");
+            String repeat = sc.nextLine();
+            repeat = repeat.toLowerCase();
+            again = repeat.equals("yes");
+        }
+        System.out.println("Thank you for using calculator");
+    }
+}
