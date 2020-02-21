@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Calculator {
 
     public static void main(String[] args) {
-        OperationChoose operationChoose = new OperationChoose();
+        CalculateAndChoose calculateAndChoose = new CalculateAndChoose();
         Scanner sc = new Scanner(System.in, "Windows-1250");
         System.out.println("Welcome in calculator!");
         boolean again = true;
@@ -20,7 +20,7 @@ public class Calculator {
             int choose = Integer.parseInt(sc.nextLine());
             System.out.println("Enter second number:");
             float b = Float.parseFloat(sc.nextLine());
-            System.out.println(operationChoose.calculate(choose, a, b));
+            System.out.println(calculateAndChoose.calculate(choose, a, b));
             System.out.println("Do you want calculate again? [yes/no]");
             String repeat = sc.nextLine();
             repeat = repeat.toLowerCase();
