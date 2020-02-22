@@ -4,8 +4,16 @@ package calculator;
  *
  * @author Laun
  */
-
+/** Class presents calculator which do choosen operation with 2 numbers. */
 public class CalculateAndChoose {
+
+/**
+     * Choose operation with numbers a and b; 1-summation,  2-substraction, 3-multiplication, 4-division, 5-exponential, 6-square root
+     * @param choose
+     * @param a
+     * @param b
+     * @return "Result is %f", result
+     */
     public String calculate(int choose, float a, float b){
         if (choose < 0 || choose > 6)
             return "Wrong choose";
