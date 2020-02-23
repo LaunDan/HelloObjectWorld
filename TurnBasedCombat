@@ -1,9 +1,6 @@
 package turnCombat;
 
-/**
- *
- * @author Laun
- */
+
 public class TurnCombat {
  public static void main(String[] args){
      Cube cube = new Cube();
