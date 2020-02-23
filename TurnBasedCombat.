@@ -1,0 +1,39 @@
+package turnCombat;
+import java.util.Random;
+
+/**
+ *
+ * @author Laun
+ */
+/** Class presents dice (cube for game) */
+public class Cube {
+    /** Generator of random numbers. */
+    private Random random;
+    /** Numbers of walls */
+    private int amountWalls;
+    
+    /**
+     *
+     */
+    public Cube(){
+        amountWalls = 6;
+        random = new Random();
+    }
+    
+    /**
+     *
+     * @param amountWalls
+     */
+    public Cube(int amountWalls){
+        this.amountWalls = amountWalls;
+        random = new Random();
+    }
+    
+    /**
+     * Return amount of walls of dice
+     * @return Amount of walls of dice.
+     */
+    public int returnAmountWalls() {
+        return amountWalls;
+    }
+}
