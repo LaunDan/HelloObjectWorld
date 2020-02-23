@@ -29,11 +29,20 @@ public class Cube {
         random = new Random();
     }
     
-    /**
+     /**
      * Return amount of walls of dice
      * @return Amount of walls of dice.
      */
     public int returnAmountWalls() {
         return amountWalls;
+    }
+    
+    public int throwed() {
+        return random.nextInt(amountWalls) + 1;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("Cube with %s walls", amountWalls);
     }
 }
