@@ -1,10 +1,7 @@
 package turnCombat;
 import java.util.Random;
 
-/**
- *
- * @author Laun
- */
+
 /** Class presents dice (cube for game) */
 public class Cube {
     /** Generator of random numbers. */
