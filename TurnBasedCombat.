@@ -1,7 +1,10 @@
 package turnCombat;
 import java.util.Random;
 
-
+/**
+ *
+ * @author Laun
+ */
 /** Class presents dice (cube for game) */
 public class Cube {
     /** Generator of random numbers. */
@@ -10,7 +13,7 @@ public class Cube {
     private int amountWalls;
     
     /**
-     *
+     * Cube with 6 walls
      */
     public Cube(){
         amountWalls = 6;
@@ -18,8 +21,8 @@ public class Cube {
     }
     
     /**
-     *
-     * @param amountWalls
+     * Cube with amountWalls walls
+     * @param amountWalls amount of walls
      */
     public Cube(int amountWalls){
         this.amountWalls = amountWalls;
@@ -34,12 +37,21 @@ public class Cube {
         return amountWalls;
     }
     
+    /**
+     * Will throw dice
+     * @return Random number from 1 to amount of walls
+     */
     public int throwed() {
         return random.nextInt(amountWalls) + 1;
     }
     
+    /**
+     * Return text about dice ("Cube with %d walls", amountWalls)
+     * @return Text about dice
+     */
     @Override
     public String toString() {
-        return String.format("Cube with %s walls", amountWalls);
+        return String.format("Cube with %d walls", amountWalls);
     }
 }
+
