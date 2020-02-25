@@ -1,8 +1,8 @@
 package calculator;
 
 /**
- *
  * @author Laun
+ * launadaniel2@gmail.com
  */
 /** Class presents calculator which do choosen operation with 2 numbers. */
 public class CalculateAndChoose {
