@@ -1,8 +1,8 @@
 package turnCombat;
 
 /**
- *
  * @author Laun
+ * launadaniel2@gmail.com
  */
 public class TurnCombat {
  public static void main(String[] args){
