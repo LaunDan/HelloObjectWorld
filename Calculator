@@ -1,8 +1,8 @@
 package calculator;
 
 /**
- *
  * @author Laun
+ * launadaniel2@gmail.com
  */
 import java.util.Scanner;
 
