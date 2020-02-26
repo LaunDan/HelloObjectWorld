@@ -1,13 +1,58 @@
 package turnCombat;
 
 /**
+ *
  * @author Laun
- * launadaniel2@gmail.com
  */
 public class TurnCombat {
- public static void main(String[] args){
-     Cube sixWallsDice = new Cube(10);
-     System.out.println(sixWallsDice.throwed());
-    
- }
+
+    public static void main(String[] args) {
+        Cube sixWallsDice = new Cube();
+        Cube tenWallsDice = new Cube(10);
+        int throwedTenDice = tenWallsDice.throwed();
+        int throwedSixDice = sixWallsDice.throwed();
+        System.out.printf("Six walls dice: %d\nTen walls dice: %d\nDice with bigger number will be attack first\n", throwedSixDice, throwedTenDice);
+        // Throwing by dices till one of them die
+        while (sixWallsDice.life > 0 && tenWallsDice.life > 0) {
+            // First attack
+            int playedSixDice = sixWallsDice.throwed();
+            int playedTenDice = tenWallsDice.throwed();
+            // Second attack
+            int playSixDice = sixWallsDice.throwed();
+            int playTenDice = tenWallsDice.throwed();
+
+            System.out.printf("Six walls dice attack\nSix walls dice attack: %d\nTen walls dice defense: %d\n", playedSixDice, playedTenDice);
+            // if six walls dice throwed bigger number, ten walls dice lost life points about this number
+            if (playedSixDice > playedTenDice) {
+                System.out.printf("Six walls dice attacked by %d points!\n", playedSixDice);
+                tenWallsDice.life -= playedSixDice;
+            }
+            // if six walls dice throwed smaller or similar number, attack will miss ten walls dice
+            if (playedSixDice <= playedTenDice) {
+                System.out.println("Six walls dice miss");
+            }
+            System.out.printf("Ten walls dice attack\nSix walls dice defense: %d\nTen walls dice attack: %d\n", playSixDice, playTenDice);
+            // if ten walls dice throwed bigger number, six walls dice lost life points about this number
+            if (playTenDice > playSixDice) {
+                System.out.printf("Ten walls dice attacked by %d points!\n", playTenDice);
+                sixWallsDice.life -= playTenDice;
+            }
+            // if ten walls dice throwed smaller or similar number, attack will miss six walls dice
+            if (playTenDice <= playSixDice) {
+                System.out.println("Ten walls dice miss");
+            }
+            // if none of dice die prints their life points
+            if (sixWallsDice.life > 0 && tenWallsDice.life > 0) {
+                System.out.printf("Six walls dice have %d life points.\nTen walls dice have %d life points.\n\n", sixWallsDice.life, tenWallsDice.life);
+            }
+            // if six walls dice win 
+            if (tenWallsDice.life <= 0){
+                System.out.printf("Six walls dice won with %d life points!!\n", sixWallsDice.life);
+            }
+            // if ten walls dice win 
+            if (sixWallsDice.life <= 0){
+                System.out.printf("Ten walls dice won with %d life points!!\n", tenWallsDice.life);
+            }
+        }
+    }
 }
