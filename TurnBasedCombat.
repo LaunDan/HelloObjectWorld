@@ -2,8 +2,8 @@ package turnCombat;
 import java.util.Random;
 
 /**
- *
  * @author Laun
+ * launadaniel2@gmail.com
  */
 /** Class presents dice (cube for game) */
 public class Cube {
