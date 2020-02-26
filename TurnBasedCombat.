@@ -2,8 +2,8 @@ package turnCombat;
 import java.util.Random;
 
 /**
+ *
  * @author Laun
- * launadaniel2@gmail.com
  */
 /** Class presents dice (cube for game) */
 public class Cube {
@@ -11,21 +11,25 @@ public class Cube {
     private Random random;
     /** Numbers of walls */
     private int amountWalls;
+    /** Live of cube */
+    public int life;
     
     /**
      * Cube with 6 walls
      */
     public Cube(){
         amountWalls = 6;
+        life = 100;
         random = new Random();
     }
     
     /**
-     * Cube with amountWalls walls
+     * Cube with amountWalls walls 
      * @param amountWalls amount of walls
      */
     public Cube(int amountWalls){
         this.amountWalls = amountWalls;
+        life = 100;
         random = new Random();
     }
     
@@ -54,4 +58,3 @@ public class Cube {
         return String.format("Cube with %d walls", amountWalls);
     }
 }
-
