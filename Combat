@@ -1,0 +1,15 @@
+package diceCombat;
+
+/**
+ * @author Laun
+ * launadaniel2@gmail.com
+ */
+public class DiceCombat {
+    public static void main(String[] args){
+        Dice dice = new Dice(10);
+        Fighter dragonSlayer = new Fighter("Dragon Slayer", 100, 20, 10, dice);
+        Fighter whiteWolf = new Fighter("White Wolf", 110, 23, 11, dice);
+        Arena arena = new Arena(dragonSlayer, whiteWolf, dice);
+        arena.combat();
+    }
+}
