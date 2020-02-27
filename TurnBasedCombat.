@@ -13,6 +13,8 @@ public class Cube {
     private int amountWalls;
     /** Live of cube */
     public int life;
+    /** Amount of won match */
+    public int matchWon;
     
     /**
      * Cube with 6 walls
@@ -20,6 +22,7 @@ public class Cube {
     public Cube(){
         amountWalls = 6;
         life = 100;
+        matchWon = 0;
         random = new Random();
     }
     
@@ -30,6 +33,7 @@ public class Cube {
     public Cube(int amountWalls){
         this.amountWalls = amountWalls;
         life = 100;
+        matchWon = 0;
         random = new Random();
     }
     
