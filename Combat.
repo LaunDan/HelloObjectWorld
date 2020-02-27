@@ -1,0 +1,142 @@
+package diceCombat;
+
+/**
+ * Class presents fighter.
+ * launadaniel2@gmail.com
+ * @author Laun
+ */
+public class Fighter {
+
+    /**
+     * Name of fighter
+     */
+    private String name;
+    /**
+     * Life in HP
+     */
+    private int life;
+    /**
+     * Max life
+     */
+    private int maxLife;
+    /**
+     * Attack in HP
+     */
+    private int attack;
+    /**
+     * Defence in HP
+     */
+    private int defence;
+    /**
+     * Instance of dice
+     */
+    private Dice dice;
+    /**
+     * Messages for users
+     */
+    private String message;
+
+    /**
+     * Fighter with name, life, defence and attack.
+     *
+     * @param name
+     * @param life
+     * @param attack
+     * @param defence
+     * @param dice
+     */
+    public Fighter(String name, int life, int attack, int defence, Dice dice) {
+        this.name = name;
+        this.life = life;
+        this.maxLife = life;
+        this.attack = attack;
+        this.defence = defence;
+        this.dice = dice;
+    }
+
+    /**
+     * return true if is fighter alive and false if othervise
+     *
+     * @return true or false
+     */
+    public boolean alive() {
+        return (life > 0);
+    }
+
+    /**
+     * Make graph presents life of fighter
+     *
+     * @return Graph presents life of fighter
+     */
+    public String graphLife() {
+        String s = "[";
+        int total = 20;
+        double amount = Math.round(((double) life / maxLife) * total);
+        if ((amount == 0) && (alive())) {
+            amount = 1;
+        }
+        for (int i = 0; i < amount; i++) {
+            s += "#";
+        }
+        for (int i = 0; i < total - amount; i++) {
+            s += " ";
+        }
+        s += "]";
+        return s;
+    }
+
+    /**
+     * defence and life changing by injury
+     *
+     * @param hit
+     */
+    public void defenceYourself(int hit) {
+        int injury = hit - (defence + dice.throwed());
+        if (injury > 0) {
+            life -= injury;
+            message = String.format("%s get damage %s hp ", name, injury);
+            if (life <= 0) {
+                life = 0;
+                message += "and die";
+            }
+        } else {
+            message = String.format("%s fight off attack", name);
+        }
+        setMessage(message);
+    }
+
+    /**
+     * Attack to the rival
+     *
+     * @param rival
+     */
+    public void attacking(Fighter rival) {
+        int hit = attack + dice.throwed();
+        setMessage(String.format("%s attacking with hit about %s hp", name, hit));
+        rival.defenceYourself(hit);
+    }
+    /**
+     * Set message to private variable
+     * @param message 
+     */
+    private void setMessage(String message){
+        this.message = message;
+    }
+    /**
+     * return message
+     * @return message
+     */
+    public String returnLastMessage(){
+        return message;
+    }
+
+    /**
+     * Write name of fighter
+     *
+     * @return name of fighter
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
+}
