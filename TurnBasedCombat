@@ -7,52 +7,62 @@ package turnCombat;
 public class TurnCombat {
 
     public static void main(String[] args) {
-        Cube sixWallsDice = new Cube();
-        Cube tenWallsDice = new Cube(10);
-        int throwedTenDice = tenWallsDice.throwed();
-        int throwedSixDice = sixWallsDice.throwed();
-        System.out.printf("Six walls dice: %d\nTen walls dice: %d\nDice with bigger number will be attack first\n", throwedSixDice, throwedTenDice);
-        // Throwing by dices till one of them die
-        while (sixWallsDice.life > 0 && tenWallsDice.life > 0) {
-            // First attack
-            int playedSixDice = sixWallsDice.throwed();
-            int playedTenDice = tenWallsDice.throwed();
-            // Second attack
-            int playSixDice = sixWallsDice.throwed();
-            int playTenDice = tenWallsDice.throwed();
+        Cube playerOne = new Cube();
+        Cube playerTwo = new Cube();
+        int draw = 0;
+        // Repeat one hundred times match
+        for (int i = 0; i < 100; i++) {
+            // Throwing by dices till one of player die
+            while (playerOne.life > 0 && playerTwo.life > 0) {
+                // First attack
+                int playerOneFirstThrow = playerOne.throwed();
+                int playerTwoFirstThrow = playerTwo.throwed();
+                // Second attack
+                int playerOneSecondThrow = playerOne.throwed();
+                int playerTwoSecondThrow = playerTwo.throwed();
 
-            System.out.printf("Six walls dice attack\nSix walls dice attack: %d\nTen walls dice defense: %d\n", playedSixDice, playedTenDice);
-            // if six walls dice throwed bigger number, ten walls dice lost life points about this number
-            if (playedSixDice > playedTenDice) {
-                System.out.printf("Six walls dice attacked by %d points!\n", playedSixDice);
-                tenWallsDice.life -= playedSixDice;
+                System.out.printf("Player one on turn\nPlayer one throwed: %d\nPlayer two throwed: %d\n", playerOneFirstThrow, playerTwoFirstThrow);
+                // if player one throwed bigger number, player two lost life points about difference of thrown numbers
+                if (playerOneFirstThrow > playerTwoFirstThrow) {
+                    System.out.printf("Player one attacked by %d points!\n", (playerOneFirstThrow - playerTwoFirstThrow));
+                    playerTwo.life -= (playerOneFirstThrow - playerTwoFirstThrow);
+                }
+                // if player one throwed smaller or similar number, attack will miss player two
+                if (playerOneFirstThrow <= playerTwoFirstThrow) {
+                    System.out.println("Player one miss");
+                }
+                System.out.printf("Player two on turn\nPlayer one throwed: %d\nPlayer two throwed: %d\n", playerOneSecondThrow, playerTwoSecondThrow);
+                // if player two throwed bigger number, player one lost life points about difference of thrown numbers
+                if (playerTwoSecondThrow > playerOneSecondThrow) {
+                    System.out.printf("Player two attacked by %d points!\n", (playerTwoSecondThrow - playerOneSecondThrow));
+                    playerOne.life -= (playerTwoSecondThrow - playerOneSecondThrow);
+                }
+                // if player two throwed smaller or similar number, attack will miss player one
+                if (playerTwoSecondThrow <= playerOneSecondThrow) {
+                    System.out.println("Player two miss");
+                }
+                // if none of player die prints their life points
+                if (playerOne.life > 0 && playerTwo.life > 0) {
+                    System.out.printf("Player one have %d life points.\nPlayer two have %d life points.\n\n", playerOne.life, playerTwo.life);
+                }
+                // if player one win 
+                if (playerTwo.life <= 0 && playerOne.life > 0) {
+                    System.out.printf("Player one won with %d life points!!\n\n", playerOne.life);
+                    playerOne.matchWon += 1;
+                }
+                // if player two win 
+                if (playerOne.life <= 0 && playerTwo.life > 0) {
+                    System.out.printf("Player two won with %d life points!!\n\n", playerTwo.life);
+                    playerTwo.matchWon += 1;
+                }
+                if (playerOne.life <= 0 && playerTwo.life <= 0) {
+                    draw += 1;
+                }
+
             }
-            // if six walls dice throwed smaller or similar number, attack will miss ten walls dice
-            if (playedSixDice <= playedTenDice) {
-                System.out.println("Six walls dice miss");
-            }
-            System.out.printf("Ten walls dice attack\nSix walls dice defense: %d\nTen walls dice attack: %d\n", playSixDice, playTenDice);
-            // if ten walls dice throwed bigger number, six walls dice lost life points about this number
-            if (playTenDice > playSixDice) {
-                System.out.printf("Ten walls dice attacked by %d points!\n", playTenDice);
-                sixWallsDice.life -= playTenDice;
-            }
-            // if ten walls dice throwed smaller or similar number, attack will miss six walls dice
-            if (playTenDice <= playSixDice) {
-                System.out.println("Ten walls dice miss");
-            }
-            // if none of dice die prints their life points
-            if (sixWallsDice.life > 0 && tenWallsDice.life > 0) {
-                System.out.printf("Six walls dice have %d life points.\nTen walls dice have %d life points.\n\n", sixWallsDice.life, tenWallsDice.life);
-            }
-            // if six walls dice win 
-            if (tenWallsDice.life <= 0){
-                System.out.printf("Six walls dice won with %d life points!!\n", sixWallsDice.life);
-            }
-            // if ten walls dice win 
-            if (sixWallsDice.life <= 0){
-                System.out.printf("Ten walls dice won with %d life points!!\n", tenWallsDice.life);
-            }
+            playerOne.life = 100;
+            playerTwo.life = 100;
         }
+        System.out.printf("Player one won %d times.\nPlayer two won %d times.\nMatch endup with draw %d times.", playerOne.matchWon, playerTwo.matchWon, draw);
     }
 }
