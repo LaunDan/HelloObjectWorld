@@ -1,0 +1,60 @@
+package diceCombat;
+
+/**
+ * launadaniel2@gmail.com
+ * @author Laun
+ */
+public class Arena {
+
+    private Fighter playerOne;
+    private Fighter playerTwo;
+    private Dice dice;
+
+    public Arena(Fighter playerOne, Fighter playerTwo, Dice dice) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+        this.dice = dice;
+    }
+
+    private void draw() {
+        System.out.println("-------------- Arena -------------- ");
+        System.out.println("Fighters hp: ");
+        System.out.printf("%s %s \n", playerOne, playerOne.graphLife());
+        System.out.printf("%s %s \n", playerTwo, playerTwo.graphLife());
+    }
+
+    private void writeMessage(String message) {
+        System.out.println(message);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            System.err.println("Error, failed to put aside sleepy");
+        }
+    }
+
+    public void combat() {
+        Fighter b1 = playerOne;
+        Fighter b2 = playerTwo;
+        System.out.println("Welcome in arena!");
+        System.out.printf("Today will fight %s againts %s! \n\n", playerOne, playerTwo);
+        boolean startsPlayerTwo = (dice.throwed() <= dice.returnAmountWalls() / 2);
+        if (startsPlayerTwo) {
+            b1 = playerTwo;
+            b2 = playerOne;
+        }
+        System.out.printf("First will attack fighter %s! \n\nSo it begins!!!", b1);
+        while (b1.alive() && b2.alive()) {
+            b1.attacking(b2);
+            draw();
+            writeMessage(b1.returnLastMessage());
+            writeMessage(b2.returnLastMessage());
+            if (b2.alive()) {
+                b2.attacking(b1);
+                draw();
+                writeMessage(b2.returnLastMessage());
+                writeMessage(b1.returnLastMessage());
+            }
+            System.out.println();
+        }
+    }
+}
