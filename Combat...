@@ -77,7 +77,7 @@ public class Arena {
             System.out.println();
         }
         if (playerOne.alive()){
-            System.out.printf("%d won!!", playerOne);
+            System.out.printf("%s won!!", playerOne);
         } else {
             System.out.printf("%s won!!", playerTwo);
         }
