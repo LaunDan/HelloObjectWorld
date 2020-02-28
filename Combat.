@@ -1,7 +1,7 @@
 package diceCombat;
 
 /**
- * Class presents fighter.
+ * Class presents fighter. 
  * launadaniel2@gmail.com
  * @author Laun
  */
@@ -37,7 +37,7 @@ public class Fighter {
     private String message;
 
     /**
-     * Fighter with name, life, defence and attack.
+     * Fighter with name, life, defence, attack and dice.
      *
      * @param name
      * @param life
@@ -66,7 +66,7 @@ public class Fighter {
     /**
      * Make graph presents life of fighter
      *
-     * @return Graph presents life of fighter
+     * @return String like "graph" presents life of fighter
      */
     public String graphLife() {
         String s = "[";
@@ -86,7 +86,9 @@ public class Fighter {
     }
 
     /**
-     * defence and life changing by injury
+     * defence and life changing by injury injury is big as hit - (defence +
+     * throw by dice) prints string about who get how much injury and if someone
+     * die, othervise prints who fight off the attack
      *
      * @param hit
      */
@@ -106,7 +108,9 @@ public class Fighter {
     }
 
     /**
-     * Attack to the rival
+     * Attack to the rival by hit witch is attack + throw dice prints message
+     * about who attack about how much strong in hp calls
+     * rival.defenceYourself(hit)
      *
      * @param rival
      */
@@ -115,18 +119,22 @@ public class Fighter {
         setMessage(String.format("%s attacking with hit about %s hp", name, hit));
         rival.defenceYourself(hit);
     }
+
     /**
      * Set message to private variable
-     * @param message 
+     *
+     * @param message
      */
-    private void setMessage(String message){
+    private void setMessage(String message) {
         this.message = message;
     }
+
     /**
      * return message
+     *
      * @return message
      */
-    public String returnLastMessage(){
+    public String returnLastMessage() {
         return message;
     }
 
