@@ -1,15 +1,29 @@
 package diceCombat;
+import java.util.Scanner;
 
 /**
+ * Class presents combat two fighters in arena
  * @author Laun
  * launadaniel2@gmail.com
  */
 public class DiceCombat {
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in, "Windows-1250");
+        // Choose name of first player
+        System.out.println("Enter first player: ");
+        String firstPlayer = sc.nextLine();
+        // Choose name of second player
+        System.out.println("Enter second player: ");
+        String secondPlayer = sc.nextLine();
+        // Create dice
         Dice dice = new Dice(10);
-        Fighter dragonSlayer = new Fighter("Dragon Slayer", 100, 20, 10, dice);
-        Fighter whiteWolf = new Fighter("White Wolf", 110, 23, 11, dice);
-        Arena arena = new Arena(dragonSlayer, whiteWolf, dice);
+        // Create first fighter
+        Fighter player1 = new Fighter(firstPlayer, 100, 20, 10, dice);
+        // Create second fighter
+        Fighter player2 = new Fighter(secondPlayer, 100, 20, 10, dice);
+        // Create arena
+        Arena arena = new Arena(player1, player2, dice);
+        //  combat
         arena.combat();
     }
 }
