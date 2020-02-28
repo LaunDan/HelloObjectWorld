@@ -3,8 +3,9 @@ package diceCombat;
 import java.util.Random;
 
 /**
- * @author Laun
+ * Class presents dice. 
  * launadaniel2@gmail.com
+ * @author Laun
  */
 public class Dice {
     /** Generator of random numbers. */
