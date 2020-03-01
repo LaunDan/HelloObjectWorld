@@ -1,0 +1,40 @@
+package statics;
+
+/**
+ *
+ * @author Laun
+ */
+public class User {
+    private String name;
+    private String password;
+    private boolean signedIn;
+    public static int minLengthPassword = 6;
+    private int id;
+    private static int nextId = 1;
+    
+    public User(String name, String password){
+        this.name = name;
+        this.password = password;
+        signedIn = false;
+        id = nextId;
+        nextId++;
+    }
+    public boolean login(String enteredPassword){
+        if (enteredPassword.equals(password)){
+            signedIn = true;
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public static boolean checkPassword(String password){
+        return password.length() >= minLengthPassword;
+    }
+    public static int returnMinLengthPassword(){
+        return minLengthPassword;
+    }
+    public int returnId(){
+        return id;
+    }
+}
