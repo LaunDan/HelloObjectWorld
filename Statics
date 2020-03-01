@@ -1,0 +1,16 @@
+package statics;
+
+/**
+ *
+ * @author Laun
+ */
+public class Statics {
+    public static void main(String[] args){
+        User user1 = new User("Daniel Launa", "password");
+        System.out.printf("ID of first user: %s\n", user1.returnId());
+        User user2 = new User("Stepanka Kebrlova", "1234abcd");
+        System.out.printf("ID of second user: %s\n", user2.returnId());
+        System.out.printf("Minimal length of password is: %s\n", User.returnMinLengthPassword());
+        
+    }
+}
