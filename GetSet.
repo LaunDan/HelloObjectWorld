@@ -1,0 +1,49 @@
+package getSet;
+
+/**
+ *
+ * @author Laun
+ */
+class Student {
+    private String name;
+    private boolean male;
+    private int age;
+    private boolean fullAged;
+    
+    public Student(String name, boolean sex, int age){
+        this.name = name;
+        this.male = sex;
+        setAge(age);
+    }
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public boolean isMale(){
+        return male;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setAge(int age){
+        this.age = age;
+        this.fullAged = this.age >= 18;
+    }
+    public boolean isFullAged(){
+        return fullAged;
+    }
+    @Override
+    public String toString(){
+        String imFullAged = "I'm";
+        if (!isFullAged()){
+            imFullAged = "I'm not";
+        }
+        String sex = "male";
+        if (!isMale()){
+            sex = "female";
+        }
+        return String.format("I'm %s, %s. I'm %d years old so %s fullaged.", getName(), sex, getAge(), imFullAged);
+    }
+}
