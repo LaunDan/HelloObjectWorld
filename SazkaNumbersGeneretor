@@ -1,0 +1,23 @@
+package sazka;
+
+import java.util.Scanner;
+
+/**
+ * Sazka numbers generator
+ * launadaniel2@gmail.com
+ * @author Laun
+ */
+public class Sazka {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in, "Windows-1250");
+        System.out.println("Welcome in Sazka numbers generator.");
+        System.out.println("How much columns do you want to generate?");
+        int columns = Integer.parseInt(sc.nextLine());
+        NumbersGenerator firstColumn = new NumbersGenerator();
+        for (int i = 0; i < columns; i++) {
+            System.out.print(firstColumn.randomNumberChooser() + "\n");
+        }
+
+    }
+}
