@@ -1,0 +1,61 @@
+package sazka;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
+
+/**
+ * Class presents generator of numbers. Return five numbers of fifty and two numers of ten.
+ * launadaniel2@gmail.com
+ * @author Laun
+ */
+public class NumbersGenerator {
+
+    private ArrayList<Integer> sixOfFifty;
+    private ArrayList<Integer> twoOfTen;
+    private Random random;
+
+    /**
+     *Class numberGenerator
+     */
+    public NumbersGenerator() {
+        random = new Random();
+        sixOfFifty = new ArrayList<Integer>();
+        twoOfTen = new ArrayList<Integer>();
+
+    }
+
+    /**
+     * Return 5 numbers of 50 and 2 numbers of 10
+     * @return String 
+     */
+    public String randomNumberChooser() {
+
+        while (sixOfFifty.size() < 5) {
+            Integer number = random.nextInt(50) + 1;
+            if (!(sixOfFifty.contains(number))) {
+                sixOfFifty.add(number);
+            }
+        }
+        while (twoOfTen.size() < 2) {
+            Integer numero = random.nextInt(10) + 1;
+            if (!(twoOfTen.contains(numero))) {
+                twoOfTen.add(numero);
+            }
+        }
+        String d = "";
+        Collections.sort(twoOfTen);
+        for (int i : twoOfTen) {
+            d += i + " ";
+        }
+        String s = "";
+        Collections.sort(sixOfFifty);
+        for (int i : sixOfFifty) {
+            s += i + " ";
+        }
+        sixOfFifty.clear();
+        twoOfTen.clear();
+        return s + "; " + d;
+
+    }
+}
