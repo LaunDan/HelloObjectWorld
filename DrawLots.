@@ -1,0 +1,31 @@
+package drawLots;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Collections;
+
+/**
+ * Class presents draw numbers and return drawn numbers.
+ * launadaniel2@gmail.com
+ * @author Laun
+ */
+public class Draw {
+    private ArrayList<Integer> numbers;
+    private Random random;
+    public Draw(){
+        random = new Random();
+        numbers = new ArrayList<Integer>();
+    }
+    public int drawLots(){
+        Integer number = random.nextInt(50) + 1;
+        numbers.add(number);
+        return number;
+    }
+    public String print(){
+        String s = "";
+        Collections.sort(numbers);
+        for (int i : numbers){
+            s += i + " ";
+        }
+        return s;
+    }
+}
